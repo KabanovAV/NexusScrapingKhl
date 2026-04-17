@@ -21,7 +21,7 @@ namespace ScrapingKhl.Services
         {
             using (new TimeMeasurer("Время выполнения загрузки страницы"))
             {
-                Log.Information($"Загрузка страницы {url} ...");
+                Log.Information($"Загрузка страницы {url}...");
                 var htmlDocument = new HtmlDocument();
                 var stream = await _httpService.GetStreamAsync(url, ct);
                 if (stream == null)
