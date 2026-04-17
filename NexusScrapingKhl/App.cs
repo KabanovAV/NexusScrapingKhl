@@ -21,7 +21,8 @@ namespace ScrapingKhl
         {
             var clubs = new List<Club>();
 
-            var clubCards = await _scrapingClubService.ScrapingClubCardAsync("clubs", new CancellationTokenSource(TimeSpan.FromMinutes(1)).Token);
+            using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(1));
+            var clubCards = await _scrapingClubService.ScrapingClubCardAsync("clubs", cts.Token);
             if (clubCards == null || clubCards.Count == 0)
             {
                 Log.Error("Список команд пустой! Программа отработана и завершает работу");
